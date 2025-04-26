@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>视频上传与链接处理</title>
+</head>
+<body>
+
+  <h2>选择上传视频或输入视频链接</h2>
+  
+  <!-- 表单输入部分 -->
+  <form id="videoForm" action="upload.php" method="post" enctype="multipart/form-data">
+    <label for="videoLink">视频链接:</label>
+    <input type="text" id="videoLink" name="videoLink" placeholder="请输入视频链接">
+    <br><br>
+    
+    <label for="videoFile">上传视频:</label>
+    <input type="file" id="videoFile" name="videoFile" accept="video/*">
+    <br><br>
+    
+    <button type="submit">提交</button>
+  </form>
+
+  <!-- Coze SDK 初始化 -->
+  <script src="https://lf-cdn.coze.cn/obj/unpkg/flow-platform/chat-app-sdk/1.2.0-beta.6/libs/cn/index.js"></script>
+  <script>
+    new CozeWebSDK.WebChatClient({
+      config: {
+        bot_id: '7496824875597414452',
+      },
+      componentProps: {
+        title: 'Coze',
+      },
+      auth: {
+        type: 'token',
+        token: 'pat_********',
+        onRefreshToken: function () {
+          return 'pat_********';
+        }
+      }
+    });
+  </script>
+
+</body>
+</html>
